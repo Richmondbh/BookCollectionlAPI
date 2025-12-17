@@ -1,8 +1,16 @@
 using BookCollectionAPI.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//Microsoft recommended approach, Hämtad från: https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/
+var connectionString =
+    builder.Configuration.GetConnectionString("BooksConnection")
+        ?? throw new InvalidOperationException("Connection string"
+        + "'BooksConnection' not found.");
+builder.Services.AddDbContext<BookCollectionContext>(options =>
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
 
