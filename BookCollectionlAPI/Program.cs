@@ -14,7 +14,10 @@ builder.Services.AddDbContext<BookCollectionContext>(options =>
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IBookCollectionRepo, MockBookRepo>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<IBookCollectionRepo, SqlBookCollectionsRepo>();
+//builder.Services.AddScoped<IBookCollectionRepo, MockBookRepo>();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
