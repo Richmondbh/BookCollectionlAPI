@@ -12,7 +12,8 @@ namespace BookCollectionAPI.Data
                 Author = "Richmond",
                 Description = "How to create Api",
                 Genre = "Software Development",
-                Title = "Api Pro"
+                Title = "Api Pro",
+                PublicationYear = 2000
             };
         }
 
@@ -26,7 +27,8 @@ namespace BookCollectionAPI.Data
                 Author = "Richmond",
                 Description = "How to create an Api",
                 Genre = "Software Development",
-                Title = "Api Pro"
+                Title = "Api Pro",
+                PublicationYear = 2000
             },
                 new Book
             {
@@ -34,7 +36,8 @@ namespace BookCollectionAPI.Data
                 Author = "Boakye",
                 Description = "How to cook",
                 Genre = "Catering",
-                Title = "Cooking Pro"
+                Title = "Cooking Pro",
+                PublicationYear = 2000
             },
                 new Book
             {
@@ -42,7 +45,8 @@ namespace BookCollectionAPI.Data
                 Author = "Hope",
                 Description = "How to dance",
                 Genre = "Dance",
-                Title = "Dancing Pro"
+                Title = "Dancing Pro",
+                PublicationYear = 2000
             }
             };
 
