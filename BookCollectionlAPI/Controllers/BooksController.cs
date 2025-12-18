@@ -1,6 +1,9 @@
-﻿using BookCollectionAPI.Data;
+﻿using AutoMapper;
+using BookCollectionAPI.Data;
+using BookCollectionAPI.Dtos;
 using BookCollectionAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookCollectionAPI.Controllers
 {
@@ -14,29 +17,45 @@ namespace BookCollectionAPI.Controllers
     {
         //private readonly MockBookRepo _bookRepo = new MockBookRepo();
         private readonly IBookCollectionRepo _repository;
+        private readonly IMapper _mapper;
 
-        public BooksController(IBookCollectionRepo repository)
+        public BooksController(IBookCollectionRepo repository, IMapper mapper)
         {
             _repository = repository;
+
+            _mapper = mapper;
         }
 
        
         //GET api/books/
         [HttpGet]
-        public ActionResult <IEnumerable<Book>> GetAllBooks()
+        public ActionResult <IEnumerable<BookCollectionReadDto>> GetAllBooks()
         {
             var bookItems = _repository.GetBooks();
 
-            return Ok(bookItems);
-           
+            if (bookItems != null)
+            {
+                return Ok(_mapper.Map<IEnumerable<BookCollectionReadDto>>(bookItems));
+            }
+
+            return NotFound( "Check datab");
         }
 
         //GET api/books/{id}
         [HttpGet("{id}")]
-        public ActionResult<Book> GetBookById(int id)
+        public ActionResult<BookCollectionReadDto> GetBookById(int id)
         {
             var bookItem= _repository.GetBookById(id);
-            return Ok(bookItem);
+
+            if (bookItem != null)
+            {
+                return Ok (_mapper.Map<BookCollectionReadDto>(bookItem));
+            }
+            return NotFound();  
         }
+
+   
+
     }
 }
+

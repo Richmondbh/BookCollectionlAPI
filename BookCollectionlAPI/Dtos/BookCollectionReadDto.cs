@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookCollectionAPI.Dtos
 {
-    public class BookCollectionReadDtos
+    public class BookCollectionReadDto
     {
          
             public int Id { get; set; }
