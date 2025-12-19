@@ -8,9 +8,11 @@ namespace BookCollectionAPI.Profiles
     {
         public BookCollectionProfile() 
         {
+            //Source-> Target
             CreateMap<Book, BookCollectionReadDto>();
 
-            CreateMap<BookCollectionReadDto, Book>();
+            //Target -> Source
+            CreateMap<BookCollectionCreateDto, Book>();
            
 
         }

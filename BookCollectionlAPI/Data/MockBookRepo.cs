@@ -4,6 +4,11 @@ namespace BookCollectionAPI.Data
 {
     public class MockBookRepo : IBookCollectionRepo
     {
+        public void CreateBook(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
         public Book GetBookById(int id)
         {
             return new Book
@@ -51,6 +56,11 @@ namespace BookCollectionAPI.Data
             };
 
             return books;
+        }
+
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -38,7 +38,7 @@ namespace BookCollectionAPI.Controllers
                 return Ok(_mapper.Map<IEnumerable<BookCollectionReadDto>>(bookItems));
             }
 
-            return NotFound( "Check datab");
+            return NotFound();
         }
 
         //GET api/books/{id}
@@ -54,7 +54,17 @@ namespace BookCollectionAPI.Controllers
             return NotFound();  
         }
 
-   
+        //Post api/books/
+        [HttpPost]
+        public ActionResult <BookCollectionCreateDto> CreateBook (BookCollectionCreateDto bookCreateDto)
+        {
+            var bookModel = _mapper.Map<Book>(bookCreateDto);
+            _repository.CreateBook(bookModel);
+
+            _repository.SaveChanges();
+
+            return Ok(bookModel);   
+        }
 
     }
 }

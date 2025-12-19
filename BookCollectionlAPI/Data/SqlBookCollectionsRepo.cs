@@ -10,6 +10,14 @@ namespace BookCollectionAPI.Data
         {
             _context = context;
         }
+
+        public void CreateBook(Book book)
+        {
+          if (book == null) { throw new ArgumentNullException (nameof(book)); }
+
+          _context.Books.Add(book);
+        }
+
         public Book GetBookById(int id)
         {
             return _context.Books.FirstOrDefault(p => p.Id == id);
@@ -18,6 +26,11 @@ namespace BookCollectionAPI.Data
         public IEnumerable<Book> GetBooks()
         {
            return _context.Books.ToList();
+        }
+
+        public bool SaveChanges()
+        {
+          return ( _context.SaveChanges() >0);
         }
     }
 }
