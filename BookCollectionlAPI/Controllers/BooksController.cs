@@ -105,6 +105,7 @@ namespace BookCollectionAPI.Controllers
 
             var bookPatch = _mapper.Map<BookCollectionUpdateDto>(bookModelFromRepo);
             patchDoc.ApplyTo(bookPatch, ModelState);
+
             if (!TryValidateModel(bookPatch))
             {
                 return ValidationProblem(ModelState);
