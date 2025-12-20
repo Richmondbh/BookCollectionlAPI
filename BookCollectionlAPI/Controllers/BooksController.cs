@@ -12,8 +12,8 @@ namespace BookCollectionAPI.Controllers
     // Using [controller] keeps the route in sync if the controller name changes
     // [Route ("api/[controller]")]
     [ApiController]
-    [Route ("api/books")]
-    public class BooksController: ControllerBase
+    [Route("api/books")]
+    public class BooksController : ControllerBase
     {
         //private readonly MockBookRepo _bookRepo = new MockBookRepo();
         private readonly IBookCollectionRepo _repository;
@@ -26,10 +26,10 @@ namespace BookCollectionAPI.Controllers
             _mapper = mapper;
         }
 
-       
+
         //GET api/books/
         [HttpGet]
-        public ActionResult <IEnumerable<BookCollectionReadDto>> GetAllBooks()
+        public ActionResult<IEnumerable<BookCollectionReadDto>> GetAllBooks()
         {
             var bookItems = _repository.GetBooks();
 
@@ -42,30 +42,54 @@ namespace BookCollectionAPI.Controllers
         }
 
         //GET api/books/{id}
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetBookById")]
         public ActionResult<BookCollectionReadDto> GetBookById(int id)
         {
-            var bookItem= _repository.GetBookById(id);
+            var bookItem = _repository.GetBookById(id);
 
             if (bookItem != null)
             {
-                return Ok (_mapper.Map<BookCollectionReadDto>(bookItem));
+                return Ok(_mapper.Map<BookCollectionReadDto>(bookItem));
             }
-            return NotFound();  
+            return NotFound();
         }
 
         //Post api/books/
         [HttpPost]
-        public ActionResult <BookCollectionCreateDto> CreateBook (BookCollectionCreateDto bookCreateDto)
+        public ActionResult<BookCollectionReadDto> CreateBook(BookCollectionCreateDto bookCreateDto)
         {
             var bookModel = _mapper.Map<Book>(bookCreateDto);
             _repository.CreateBook(bookModel);
 
             _repository.SaveChanges();
 
-            return Ok(bookModel);   
+            var bookReadDto = _mapper.Map<BookCollectionReadDto>(bookModel);
+            return CreatedAtRoute(
+                nameof(GetBookById), new { id = bookReadDto.Id }, bookReadDto);
+
+
         }
 
+
+        //PUT api/books/{id}
+        [HttpPut("{id}")]
+        public ActionResult Updatebook(int id, BookCollectionUpdateDto bookUpdateDto)
+        {
+            var bookModelFromRepo = _repository.GetBookById(id);
+
+            if (bookModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(bookUpdateDto, bookModelFromRepo);
+
+            _repository.UpdateBook(bookModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
 

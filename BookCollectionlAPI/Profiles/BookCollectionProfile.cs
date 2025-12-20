@@ -13,7 +13,11 @@ namespace BookCollectionAPI.Profiles
 
             //Target -> Source
             CreateMap<BookCollectionCreateDto, Book>();
-           
+
+            //Target -> Source
+            CreateMap<BookCollectionUpdateDto, Book>();
+
+
 
         }
     }

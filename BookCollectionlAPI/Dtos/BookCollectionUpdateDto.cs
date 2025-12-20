@@ -2,9 +2,8 @@
 
 namespace BookCollectionAPI.Dtos
 {
-    public class BookCollectionCreateDto
+    public class BookCollectionUpdateDto
     {
-
         [Required]
         [MaxLength(200)]
         public string Title { get; set; }
@@ -25,6 +24,5 @@ namespace BookCollectionAPI.Dtos
         [Required]
         [Range(1800, 2100)]
         public int PublicationYear { get; set; }
-
     }
 }

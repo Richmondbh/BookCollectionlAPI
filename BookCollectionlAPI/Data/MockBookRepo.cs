@@ -62,5 +62,10 @@ namespace BookCollectionAPI.Data
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateBook(Book book)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
