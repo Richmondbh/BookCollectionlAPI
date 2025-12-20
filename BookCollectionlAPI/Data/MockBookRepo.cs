@@ -9,6 +9,11 @@ namespace BookCollectionAPI.Data
             throw new NotImplementedException();
         }
 
+        public void DeleteBook(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
         public Book GetBookById(int id)
         {
             return new Book

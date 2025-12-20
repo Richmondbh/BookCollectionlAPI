@@ -2,6 +2,7 @@
 using BookCollectionAPI.Data;
 using BookCollectionAPI.Dtos;
 using BookCollectionAPI.Models;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -85,6 +86,51 @@ namespace BookCollectionAPI.Controllers
             _mapper.Map(bookUpdateDto, bookModelFromRepo);
 
             _repository.UpdateBook(bookModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        //PATCH api/books/{id}
+        [HttpPatch("{id}")]
+        public ActionResult PatialBookUpdate(int id, JsonPatchDocument<BookCollectionUpdateDto> patchDoc) 
+        {
+            var bookModelFromRepo = _repository.GetBookById(id);
+
+            if (bookModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var bookPatch = _mapper.Map<BookCollectionUpdateDto>(bookModelFromRepo);
+            patchDoc.ApplyTo(bookPatch, ModelState);
+            if (!TryValidateModel(bookPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(bookPatch, bookModelFromRepo);
+            _repository.UpdateBook(bookModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        //DELETE api/commands/ {id}
+        [HttpDelete("{id}")]
+
+        public ActionResult DeleteBook (int id)
+        {
+            var bookModelFromRepo = _repository.GetBookById(id);
+
+            if (bookModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteBook(bookModelFromRepo);
 
             _repository.SaveChanges();
 

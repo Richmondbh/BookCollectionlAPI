@@ -12,7 +12,9 @@ var connectionString =
 builder.Services.AddDbContext<BookCollectionContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

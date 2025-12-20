@@ -18,6 +18,16 @@ namespace BookCollectionAPI.Data
           _context.Books.Add(book);
         }
 
+        public void DeleteBook(Book book)
+        {
+            if (book == null)
+            {
+                throw new ArgumentNullException (nameof(book));
+
+            }
+            _context.Books.Remove(book);
+        }
+
         public Book GetBookById(int id)
         {
             return _context.Books.FirstOrDefault(p => p.Id == id);
