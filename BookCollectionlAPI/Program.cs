@@ -30,7 +30,13 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "Book Collection API",
-        Version = "v1"
+        Version = "v1",
+        Contact = new OpenApiContact
+        {
+            Name = "Richmond Boakye",
+            Email = "richmondboakye0017@gmail.com",
+            Url = new Uri("https://github.com/Richmondbh")
+        }
     });
 });
 
