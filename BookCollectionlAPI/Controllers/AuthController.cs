@@ -1,6 +1,7 @@
 ﻿using BookCollectionAPI.Dtos;
 using BookCollectionAPI.Entities;
 using BookCollectionAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookCollectionAPI.Controllers
@@ -25,5 +26,45 @@ namespace BookCollectionAPI.Controllers
             return Ok(user);
         }
 
+        // POST: api/auth/login
+        [HttpPost("login")]
+        public async Task<ActionResult<TokenResponseDto>> Login(UserDto request)
+        {
+            var result = await _authService.LoginAsync(request);
+            if (result is null)
+                return BadRequest("Invalid username or password.Please verify");
+
+            return Ok(result);
+        }
+
+        // POST: api/auth/refresh-token
+        [HttpPost("refresh-token")]
+        public async Task<ActionResult<TokenResponseDto>> RefreshToken(RefreshTokenRequestDto request)
+        {
+            var result = await _authService.RefreshTokensAsync(request);
+            if (result is null || result.AccessToken is null || result.RefreshToken is null)
+                return Unauthorized("Invalid refresh token.");
+
+            return Ok(result);
+        }
+
+        // GET: api/auth (Test endpoint)
+        [Authorize]
+        [HttpGet]
+        public IActionResult AuthenticatedOnlyEndpoint()
+        {
+            return Ok("You are authenticated! Cheers!!");
+        }
+
+        // GET: api/auth/admin-only (Admin test endpoint)
+        [Authorize(Roles = "Admin")]
+        [HttpGet("admin-only")]
+        public IActionResult AdminOnlyEndpoint()
+        {
+            return Ok("You have logged in as an Admin!");
+        }
     }
 }
+
+    
+

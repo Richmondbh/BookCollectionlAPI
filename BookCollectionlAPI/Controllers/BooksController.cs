@@ -2,6 +2,7 @@
 using BookCollectionAPI.Data;
 using BookCollectionAPI.Dtos;
 using BookCollectionAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -56,6 +57,7 @@ namespace BookCollectionAPI.Controllers
         }
 
         //Post api/books/
+        [Authorize]
         [HttpPost]
         public ActionResult<BookCollectionReadDto> CreateBook(BookCollectionCreateDto bookCreateDto)
         {
@@ -73,6 +75,7 @@ namespace BookCollectionAPI.Controllers
 
 
         //PUT api/books/{id}
+        [Authorize]
         [HttpPut("{id}")]
         public ActionResult Updatebook(int id, BookCollectionUpdateDto bookUpdateDto)
         {
@@ -93,6 +96,7 @@ namespace BookCollectionAPI.Controllers
         }
 
         //PATCH api/books/{id}
+        [Authorize(Roles = "Admin")]
         [HttpPatch("{id}")]
         public ActionResult PatialBookUpdate(int id, JsonPatchDocument<BookCollectionUpdateDto> patchDoc) 
         {
@@ -120,8 +124,8 @@ namespace BookCollectionAPI.Controllers
         }
 
         //DELETE api/commands/ {id}
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
-
         public ActionResult DeleteBook (int id)
         {
             var bookModelFromRepo = _repository.GetBookById(id);
