@@ -1,4 +1,5 @@
-﻿using BookCollectionAPI.Models;
+﻿using BookCollectionAPI.Entities;
+using BookCollectionAPI.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
@@ -13,5 +14,6 @@ namespace BookCollectionAPI.Data
         }
 
         public DbSet<Book> Books { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
