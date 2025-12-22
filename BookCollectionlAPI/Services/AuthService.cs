@@ -21,6 +21,7 @@ namespace BookCollectionAPI.Services
         {
 
             _context = context;
+            _configuration = configuration;
         }
 
         public async Task<User?> RegisterAsync(UserDto request)

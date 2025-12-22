@@ -3,8 +3,7 @@ using BookCollectionAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi;
-
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 
@@ -62,30 +61,30 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 
-    //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    //{
-    //    Name = "Authorization",
-    //    Type = SecuritySchemeType.Http,
-    //    Scheme = "Bearer",
-    //    BearerFormat = "JWT",
-    //    In = ParameterLocation.Header,
-    //    Description = "Enter password (Bearer..)"
-    //});
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Enter password (Bearer..)"
+    });
 
-    //c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    //{
-    //    {
-    //        new OpenApiSecurityScheme
-    //        {
-    //            Reference = new OpenApiReference
-    //            {
-    //                Type = ReferenceType.SecurityScheme,
-    //                Id = "Bearer"
-    //            }
-    //        },
-    //        new string[] {}
-    //    }
-    //});
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
 });
 
 
