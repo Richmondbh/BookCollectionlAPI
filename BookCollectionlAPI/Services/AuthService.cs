@@ -123,7 +123,7 @@ namespace BookCollectionAPI.Services
             };
         }
 
-        private string GenerateRefreshToken()
+        private string GenerateRefreshToken() 
         {
             var randomNumber = new byte[32];
             using var rng = RandomNumberGenerator.Create();

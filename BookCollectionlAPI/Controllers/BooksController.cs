@@ -30,10 +30,11 @@ namespace BookCollectionAPI.Controllers
 
 
         //GET api/books/
+        [AllowAnonymous]
         [HttpGet]
-        public ActionResult<IEnumerable<BookCollectionReadDto>> GetAllBooks()
+        public async Task<ActionResult<IEnumerable<BookCollectionReadDto>>> GetAllBooksAsync()
         {
-            var bookItems = _repository.GetBooks();
+            var bookItems = await _repository.GetBooksAsync();
 
             if (bookItems != null)
             {
@@ -44,10 +45,11 @@ namespace BookCollectionAPI.Controllers
         }
 
         //GET api/books/{id}
-        [HttpGet("{id}", Name = "GetBookById")]
-        public ActionResult<BookCollectionReadDto> GetBookById(int id)
+        [AllowAnonymous]
+        [HttpGet("{id:int}", Name = "GetBookByIAsync")]
+        public async Task<ActionResult<BookCollectionReadDto>> GetBookByIdAsync(int id)
         {
-            var bookItem = _repository.GetBookById(id);
+            var bookItem = await _repository.GetBookByIdAsync(id);
 
             if (bookItem != null)
             {
@@ -59,16 +61,19 @@ namespace BookCollectionAPI.Controllers
         //Post api/books/
         [Authorize]
         [HttpPost]
-        public ActionResult<BookCollectionReadDto> CreateBook(BookCollectionCreateDto bookCreateDto)
+        public async Task<ActionResult<BookCollectionReadDto>> CreateBookAsync([FromBody]BookCollectionCreateDto bookCreateDto)
         {
             var bookModel = _mapper.Map<Book>(bookCreateDto);
             _repository.CreateBook(bookModel);
 
-            _repository.SaveChanges();
+            await _repository.SaveChangesAsync();
 
             var bookReadDto = _mapper.Map<BookCollectionReadDto>(bookModel);
-            return CreatedAtRoute(
-                nameof(GetBookById), new { id = bookReadDto.Id }, bookReadDto);
+            return CreatedAtRoute
+                (
+                nameof(GetBookByIdAsync), 
+                new { id = bookReadDto.Id },
+                bookReadDto);
 
 
         }
@@ -77,9 +82,9 @@ namespace BookCollectionAPI.Controllers
         //PUT api/books/{id}
         [Authorize]
         [HttpPut("{id}")]
-        public ActionResult Updatebook(int id, BookCollectionUpdateDto bookUpdateDto)
+        public async Task<ActionResult> UpdatebookAsync(int id, BookCollectionUpdateDto bookUpdateDto)
         {
-            var bookModelFromRepo = _repository.GetBookById(id);
+            var bookModelFromRepo = await  _repository.GetBookByIdAsync(id);
 
             if (bookModelFromRepo == null)
             {
@@ -90,7 +95,7 @@ namespace BookCollectionAPI.Controllers
 
             _repository.UpdateBook(bookModelFromRepo);
 
-            _repository.SaveChanges();
+            await _repository.SaveChangesAsync();
 
             return NoContent();
         }
@@ -98,9 +103,9 @@ namespace BookCollectionAPI.Controllers
         //PATCH api/books/{id}
         [Authorize(Roles = "Admin")]
         [HttpPatch("{id}")]
-        public ActionResult PatialBookUpdate(int id, JsonPatchDocument<BookCollectionUpdateDto> patchDoc) 
+        public async Task<ActionResult> PatialBookUpdateAsync(int id, JsonPatchDocument<BookCollectionUpdateDto> patchDoc) 
         {
-            var bookModelFromRepo = _repository.GetBookById(id);
+            var bookModelFromRepo = await _repository.GetBookByIdAsync(id);
 
             if (bookModelFromRepo == null)
             {
@@ -118,7 +123,7 @@ namespace BookCollectionAPI.Controllers
             _mapper.Map(bookPatch, bookModelFromRepo);
             _repository.UpdateBook(bookModelFromRepo);
 
-            _repository.SaveChanges();
+            await _repository.SaveChangesAsync();
 
             return NoContent();
         }
@@ -126,9 +131,9 @@ namespace BookCollectionAPI.Controllers
         //DELETE api/commands/ {id}
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
-        public ActionResult DeleteBook (int id)
+        public async Task<ActionResult> DeleteBookAsync (int id)
         {
-            var bookModelFromRepo = _repository.GetBookById(id);
+            var bookModelFromRepo = await _repository.GetBookByIdAsync(id);
 
             if (bookModelFromRepo == null)
             {
@@ -137,7 +142,7 @@ namespace BookCollectionAPI.Controllers
 
             _repository.DeleteBook(bookModelFromRepo);
 
-            _repository.SaveChanges();
+           await _repository.SaveChangesAsync();
 
             return NoContent();
         }

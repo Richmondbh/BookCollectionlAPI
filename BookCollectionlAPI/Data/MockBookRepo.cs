@@ -14,9 +14,9 @@ namespace BookCollectionAPI.Data
             throw new NotImplementedException();
         }
 
-        public Book GetBookById(int id)
+        public Task<Book> GetBookByIdAsync(int id)
         {
-            return new Book
+            var book =new Book
             {
                 Id = 0,
                 Author = "Richmond",
@@ -25,15 +25,18 @@ namespace BookCollectionAPI.Data
                 Title = "Api Pro",
                 PublicationYear = 2000
             };
+
+            return Task.FromResult<Book?>(book);
         }
 
-        public IEnumerable<Book> GetBooks()
+
+        public Task<IEnumerable<Book>> GetBooksAsync()
         {
             var books = new List<Book>
             {
                 new Book
             {
-                Id = 0,
+                Id = 1,
                 Author = "Richmond",
                 Description = "How to create an Api",
                 Genre = "Software Development",
@@ -60,10 +63,11 @@ namespace BookCollectionAPI.Data
             }
             };
 
-            return books;
+            return Task.FromResult<IEnumerable<Book>>(books);
         }
 
-        public bool SaveChanges()
+
+        public Task<bool> SaveChangesAsync()
         {
             throw new NotImplementedException();
         }

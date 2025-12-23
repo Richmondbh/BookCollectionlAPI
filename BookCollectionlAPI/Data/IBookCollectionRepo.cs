@@ -5,9 +5,9 @@ namespace BookCollectionAPI.Data
     public interface IBookCollectionRepo
     {
 
-      bool SaveChanges ();
-      IEnumerable<Book> GetBooks();
-      Book GetBookById(int id);
+      Task <bool> SaveChangesAsync ();
+      Task<IEnumerable<Book>> GetBooksAsync();
+      Task<Book?> GetBookByIdAsync(int id);
       void CreateBook(Book book);
         void UpdateBook(Book book); 
         void DeleteBook(Book book);

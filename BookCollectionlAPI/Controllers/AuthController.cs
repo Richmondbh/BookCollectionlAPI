@@ -19,7 +19,7 @@ namespace BookCollectionAPI.Controllers
         }
         // POST: api/auth/register
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(UserDto request)
+        public async Task<ActionResult<UserDto>> Register(UserDto request)
         {
             var user = await _authService.RegisterAsync(request);
             if (user is null) return BadRequest("Username already exists.");

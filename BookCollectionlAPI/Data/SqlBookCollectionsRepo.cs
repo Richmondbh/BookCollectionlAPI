@@ -1,4 +1,5 @@
 ﻿using BookCollectionAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookCollectionAPI.Data
 {
@@ -28,19 +29,20 @@ namespace BookCollectionAPI.Data
             _context.Books.Remove(book);
         }
 
-        public Book GetBookById(int id)
+        public async Task <Book?> GetBookByIdAsync(int id)
         {
-            return _context.Books.FirstOrDefault(p => p.Id == id);
+            return await _context.Books.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public IEnumerable<Book> GetBooks()
+        public async Task<IEnumerable<Book>> GetBooksAsync()
         {
-           return _context.Books.ToList();
+           return await  _context.Books.ToListAsync();
         }
 
-        public bool SaveChanges()
+        public async Task<bool> SaveChangesAsync ()
         {
-          return ( _context.SaveChanges() >0);
+          return await ( _context.SaveChangesAsync()) >0;
+          
         }
 
         public void UpdateBook(Book book)
