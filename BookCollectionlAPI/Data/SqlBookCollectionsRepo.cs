@@ -41,8 +41,10 @@ namespace BookCollectionAPI.Data
 
         public async Task<bool> SaveChangesAsync ()
         {
-          return await ( _context.SaveChangesAsync()) >0;
-          
+            var result = await _context.SaveChangesAsync();
+            return result > 0;
+            //return await (_context.SaveChangesAsync()) >0;
+
         }
 
         public void UpdateBook(Book book)
