@@ -1,6 +1,7 @@
 ﻿using BookCollectionAPI.Data;
 using BookCollectionAPI.Dtos;
 using BookCollectionAPI.Entities;
+using BookCollectionAPI.Migrations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -71,7 +72,7 @@ namespace BookCollectionAPI.Services
             return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
         }
 
-
+     
         public async Task<TokenResponseDto?> LoginAsync(UserDto request)
         {
             var user = await _context.Users
@@ -123,6 +124,7 @@ namespace BookCollectionAPI.Services
             };
         }
 
+    
         private string GenerateRefreshToken() 
         {
             var randomNumber = new byte[32];
