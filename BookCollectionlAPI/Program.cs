@@ -34,6 +34,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
 
 //builder.Services.AddControllers();
 builder.Services.AddControllers()
@@ -92,14 +102,24 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI(
+    options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Book Collection API v1");
+        options.RoutePrefix = "swagger"; 
+    });
+
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
 
 
 app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 
 app.UseRouting();
 
