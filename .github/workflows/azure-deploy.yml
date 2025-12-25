@@ -29,7 +29,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: bookcollectionapi   # set this to the name of your Azure Web App
-  DOTNET_VERSION: '9.0.0'
+  DOTNET_VERSION: '8.0.x'
 
 jobs:
   build-and-deploy:
