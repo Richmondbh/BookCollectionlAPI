@@ -1,11 +1,11 @@
-# 📚 Book Collection API
+# 📕Book Collection API
 
 A production-ready REST API built with **ASP.NET Core** as a backend-focused portfolio project.  
 The system demonstrates clean architecture, industry best practices, and real-world API design.
 
 ---
 
-## 🚀 Overview
+## ✈️Overview
 
 The **Book Collection API** is a CRUD-based REST service for managing books.  
 It was initially planned as a Christmas break project but was completed ahead of schedule, allowing room for further backend enhancements.
@@ -29,7 +29,7 @@ This project is part of my preparation for:
 
 ---
 
-## ✨ Features
+## 🔆Features
 
 - Full **CRUD** operations
 - **DTOs** for clean API contracts
@@ -41,12 +41,12 @@ This project is part of my preparation for:
 
 ---
 
-## 📄 API Documentation
+## 📝API Documentation
 
 Swagger UI is enabled in development mode:
 
 -----
-📚 Learning Resources & References
+📚 📖Learning Resources & References
 
 This project was built using official documentation and trusted learning resources:
 
@@ -73,7 +73,7 @@ https://www.youtube.com/watch?v=g3uXnRyMRI4
 &
 https://www.youtube.com/watch?v=fmvcAzHpsk8
 -----
-🧭 Next Steps (Planned Enhancements)
+🏹Next Steps (Planned Enhancements)
 
 🔐 JWT Authentication & Authorization
 
@@ -83,9 +83,9 @@ https://www.youtube.com/watch?v=fmvcAzHpsk8
 
 📈 Logging & monitoring
 
-🧩 Pagination & filtering
+🧹Pagination & filtering
 ---------------------------------------------
-👤 Author
+👤 ✍🏽Author
 
 Richmond Boakye  | System Development / Informatics (Mittuniversitetet)  | Backend-focused .NET Developer
 
