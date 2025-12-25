@@ -1,92 +1,334 @@
-# 📕Book Collection API
+# 📕 Book Collection API
 
-A production-ready REST API built with **ASP.NET Core** as a backend-focused portfolio project.  
-The system demonstrates clean architecture, industry best practices, and real-world API design.
+A production-ready REST API built with **ASP.NET Core** for managing book collections with JWT authentication.  
+Demonstrates clean architecture, modern backend practices, and enterprise-grade API design.
 
 ---
 
-## ✈️Overview
+## 🚀 Live Demo
 
-The **Book Collection API** is a CRUD-based REST service for managing books.  
-It was initially planned as a Christmas break project but was completed ahead of schedule, allowing room for further backend enhancements.
+**API Base URL:** `https://bookcollectionapi-ewddceafbqcja8d4.swedencentral-01.azurewebsites.net`
 
-This project is part of my preparation for:
-- **Bachelor’s thesis (Informatics / System Development)**
-- **Professional backend development roles**
+**Swagger Documentation:** `https://bookcollectionapi-ewddceafbqcja8d4.swedencentral-01.azurewebsites.net/swagger`
+
+> 💡 **Tip:** Try the interactive API documentation in Swagger to test all endpoints!
+
+---
+
+## ✈️ Overview
+
+The **Book Collection API** is a CRUD-based REST service with JWT authentication and role-based authorization.  
+Initially planned as a Christmas break learning project, it evolved into a comprehensive backend system showcasing production-ready practices.
+
+**Project Purpose:**
+- Backend-focused portfolio piece
+- Preparation for Bachelor's thesis (Informatics / System Development)
+- Demonstration of professional .NET development skills
+- Foundation for future supermarket management system thesis project
 
 ---
 
 ## 🛠 Tech Stack
 
-- **.NET / ASP.NET Core**
-- **Entity Framework Core**
-- **SQL Server**
-- **Repository Pattern**
-- **AutoMapper**
-- **DTO-based API design**
-- **Swagger / OpenAPI documentation**
-- **Newtonsoft.Json (JSON Patch support)**
+### Core Technologies
+- **.NET 8.0** - Latest LTS framework
+- **ASP.NET Core Web API** - RESTful API framework
+- **Entity Framework Core** - ORM for database operations
+- **SQL Server** - Relational database (Azure SQL)
+
+### Architecture & Patterns
+- **Repository Pattern** - Data access abstraction
+- **DTO Pattern** - Clean API contracts
+- **Dependency Injection** - Loose coupling
+- **Async/Await** - Non-blocking operations
+
+### Authentication & Security
+- **JWT Bearer Tokens** - Stateless authentication
+- **Refresh Tokens** - Token renewal mechanism
+- **Role-Based Authorization** - User/Admin roles
+- **BCrypt Password Hashing** - Secure credential storage
+
+### Additional Libraries
+- **AutoMapper** - Object-to-object mapping
+- **Newtonsoft.Json** - JSON serialization & JSON Patch
+- **Swashbuckle** - OpenAPI/Swagger documentation
+
+### DevOps & Deployment
+- **Azure App Service** - Cloud hosting
+- **Azure SQL Database** - Managed database
+- **GitHub Actions** - CI/CD pipeline
+- **Git** - Version control
 
 ---
 
-## 🔆Features
+## 🔆 Features
 
-- Full **CRUD** operations
-- **DTOs** for clean API contracts
-- **Repository abstraction** for data access
-- **AutoMapper** for entity ↔ DTO mapping
-- **Partial updates (PATCH)** using JSON Patch
-- **Swagger UI** for interactive API documentation
-- **Input validation** using Data Annotations
+### Core Functionality
+- ✅ Full **CRUD** operations for books
+- ✅ **User registration & authentication**
+- ✅ **JWT token-based security**
+- ✅ **Role-based authorization** (User, Admin)
+- ✅ **Refresh token mechanism** for session management
+
+### API Design
+- ✅ **RESTful architecture** following HTTP standards
+- ✅ **DTO-based contracts** for clean separation
+- ✅ **Partial updates (PATCH)** using JSON Patch
+- ✅ **Input validation** with Data Annotations
+- ✅ **Swagger/OpenAPI** interactive documentation
+
+### Code Quality
+- ✅ **Repository pattern** for testable data access
+- ✅ **AutoMapper** for maintainable mappings
+- ✅ **Async/await** for scalable performance
+- ✅ **Dependency injection** throughout
 
 ---
 
-## 📝API Documentation
+## 📋 API Endpoints
 
-Swagger UI is enabled in development mode:
+### 🔐 Authentication
+| Method | Endpoint | Description | Public |
+|--------|----------|-------------|--------|
+| POST | `/api/auth/register` | Register new user | ✅ |
+| POST | `/api/auth/login` | Login and receive JWT tokens | ✅ |
+| POST | `/api/auth/refresh-token` | Refresh access token | ✅ |
 
------
-📚 📖Learning Resources & References
+**Example Request (Register):**
+```json
+POST /api/auth/register
+{
+  "username": "richmond",
+  "password": "SecurePass123!"
+}
+```
 
-This project was built using official documentation and trusted learning resources:
+**Example Response:**
+```json
+{
+  "id": 1,
+  "username": "richmond",
+  "role": "User"
+}
+```
 
-ASP.NET Core Dependency Injection
-https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection
+---
 
-Entity Framework Core – DbContext Configuration
-https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/
+### 📚 Books Management
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| GET | `/api/books` | Get all books | ❌ No |
+| GET | `/api/books/{id}` | Get book by ID | ❌ No |
+| POST | `/api/books` | Create new book | ✅ Yes |
+| PUT | `/api/books/{id}` | Update entire book | ✅ Yes |
+| PATCH | `/api/books/{id}` | Partial update book | ✅ Yes |
+| DELETE | `/api/books/{id}` | Delete book | ✅ Yes (Admin only) |
 
-EF Core Connection Strings
-https://learn.microsoft.com/en-us/ef/core/miscellaneous/connection-strings
+**Example Request (Create Book):**
+```json
+POST /api/books
+Authorization: Bearer {your-jwt-token}
 
-Data Annotations Validation
-https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations
+{
+  "title": "Clean Coding",
+  "author": "Richmond Boakye",
+  "description": "A handbook for agile software developers",
+  "genre": "Technology",
+  "publicationYear": 2025
+}
+```
 
-SQL Server Certificate Trust Issue
-https://stackoverflow.com/questions/17615260/the-certificate-chain-was-issued-by-an-authority-that-is-not-trusted
+---
 
-EF Core Table Naming
-https://learn.microsoft.com/en-us/answers/questions/494218/how-to-change-the-table-name-to-lower-case-in-gene
+## 🧪 Testing the API
 
-Tutorial References
-https://www.youtube.com/watch?v=g3uXnRyMRI4
-&
-https://www.youtube.com/watch?v=fmvcAzHpsk8
------
-🏹Next Steps (Planned Enhancements)
+### Option 1: Swagger UI (Recommended)
 
-🔐 JWT Authentication & Authorization
+1. Visit the [Swagger UI](https://bookcollectionapi-ewddceafbqcja8d4.swedencentral-01.azurewebsites.net/swagger)
+2. Click **"Try it out"** on any endpoint
+3. For protected endpoints:
+   - First, use `/api/auth/register` and `/api/auth/login`
+   - Copy the `accessToken` from the login response
+   - Click the **"Authorize"** button (🔒 lock icon)
+   - Enter: `Bearer {your-access-token}`
+   - Click **"Authorize"**
+   - Now you can test protected endpoints!
 
-🧪 Unit & Integration Testing
+### Option 2: Postman
 
-☁️ Cloud deployment (Azure)
-
-📈 Logging & monitoring
-
-🧹Pagination & filtering
----------------------------------------------
-👤 ✍🏽Author
-
-Richmond Boakye  | System Development / Informatics (Mittuniversitetet)  | Backend-focused .NET Developer
+1. Import the API collection
+2. Set base URL: `https://bookcollectionapi-ewddceafbqcja8d4.swedencentral-01.azurewebsites.net`
+3. Add header: `Authorization: Bearer {token}`
 
 
+---
+
+## 📚 Learning Resources & References
+
+### Official Documentation
+- [ASP.NET Core Dependency Injection](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection)
+- [Entity Framework Core – DbContext Configuration](https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/)
+- [EF Core Connection Strings](https://learn.microsoft.com/en-us/ef/core/miscellaneous/connection-strings)
+- [Data Annotations Validation](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations)
+- [JWT Authentication in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/)
+- https://learn.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-10.0
+- https://learn.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-8.0&tabs=visual-studio
+- https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-10.0
+- https://learn.microsoft.com/en-us/ef/core/miscellaneous/connection-strings?tabs=dotnet-core-cli
+
+### Problem-Solving Resources
+- [SQL Server Certificate Trust Issue](https://stackoverflow.com/questions/17615260/the-certificate-chain-was-issued-by-an-authority-that-is-not-trusted)
+- [EF Core Table Naming](https://learn.microsoft.com/en-us/answers/questions/494218/how-to-change-the-table-name-to-lower-case-in-gene)
+
+### Tutorial References
+- [Les Jackson's .NET REST API Tutorial](https://www.youtube.com/watch?v=fmvcAzHpsk8)
+- [JWT Authentication Tutorial](https://www.youtube.com/watch?v=6EEltKS8AwA)
+- https://www.youtube.com/watch?v=nVHEnRA8LL4&t=291s
+
+---
+
+## 🏗️ Project Architecture
+```
+BookCollectionAPI/
+├── Controllers/           # API endpoints
+│   ├── BooksController.cs
+│   └── AuthController.cs
+├── Data/                  # Data access layer
+│   ├── BookCollectionContext.cs
+│   ├── IBookCollectionRepo.cs
+│   └── SqlBookCollectionsRepo.cs
+├── Dtos/                  # Data transfer objects
+│   ├── BookCollectionReadDto.cs
+│   ├── BookCollectionCreateDto.cs
+│   └── BookCollectionUpdateDto.cs
+├── Models/                # Domain entities
+│   ├── Book.cs
+│   └── User.cs
+├── Profiles/              # AutoMapper configurations
+│   └── BookCollectionProfile.cs
+├── Services/              # Business logic
+│   ├── IAuthService.cs
+│   └── AuthService.cs
+└── Program.cs            # Application entry point
+```
+
+---
+
+## 🏹 Next Steps (Planned Enhancements)
+
+### Short-term (Next 2 weeks)
+- [ ] **Unit Testing** - xUnit test suite
+- [ ] **Integration Testing** - API endpoint tests
+- [ ] **Logging** - Structured logging with Serilog
+- [ ] **Pagination** - Efficient data retrieval for large datasets
+
+### Medium-term (Thesis preparation)
+- [ ] **Advanced Filtering** - Query parameters for search
+- [ ] **Sorting** - Flexible result ordering
+- [ ] **Caching** - Redis for performance optimization
+- [ ] **Rate Limiting** - API abuse prevention
+
+### Long-term (Professional practice)
+- [ ] **Microservices** - Service decomposition
+- [ ] **Message Queuing** - RabbitMQ/Azure Service Bus
+- [ ] **Docker** - Containerization
+- [ ] **Kubernetes** - Orchestration for scalability
+
+---
+
+## 🚀 Local Development
+
+### Prerequisites
+- .NET 8.0 SDK
+- SQL Server or SQL Server Express
+- Visual Studio 2022 / VS Code / Rider
+
+### Setup
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/Richmondbh/BookCollectionAPI.git
+cd BookCollectionAPI
+```
+
+2. **Update connection string**
+
+Right-click project → **Manage User Secrets**
+```json
+{
+  "ConnectionStrings": {
+    "BooksConnection": "Server=localhost\\SQLEXPRESS;Database=BookCollectionDb;Trusted_Connection=True;TrustServerCertificate=True;"
+  },
+  "AppSettings": {
+    "Token": "YourSuperSecretKeyHere",
+    "Issuer": "BookCollectionAPI",
+    "Audience": "BookCollectionAPIUsers"
+  }
+}
+```
+
+3. **Run migrations**
+```bash
+dotnet ef database update
+```
+
+4. **Run the application**
+```bash
+dotnet run
+```
+
+5. **Access Swagger**
+```
+https://localhost:7XXX/swagger
+```
+
+---
+
+## 📊 Deployment
+
+### GitHub Actions CI/CD
+
+This project uses **GitHub Actions** for continuous deployment to Azure:
+
+1. Code pushed to `main` branch
+2. GitHub Actions workflow triggered
+3. Build and test
+4. Deploy to Azure App Service
+5. Live in ~3-5 minutes! 🚀
+
+**View the workflow:** `.github/workflows/azure-deploy.yml`
+
+---
+
+## 👤 Author
+
+**Richmond Boakye**  
+System Development / Informatics Student @ Mittuniversitetet (Mid Sweden University)
+
+- 📧 Email: richmondboakye0017@gmail.com
+- 💼 LinkedIn: [Richmond Boakye](https://www.linkedin.com/in/richmond-boakye-188678207/) 
+- 🐙 GitHub: [@Richmondbh](https://github.com/Richmondbh)
+- 🎓 Focus: Backend Development with .NET, C#
+
+---
+
+## 📜 License
+
+This project is open source and available for educational purposes.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Les Jackson** - For excellent ASP.NET Core tutorials
+- **Patrick God** -  For excellent JWT authntication tutorials
+- **Microsoft Learn** - Comprehensive .NET documentation
+- **Mittuniversitetet** - Academic foundation in System Development
+
+---
+
+**⭐ If you find this project helpful, consider giving it a star!**
+
+---
+
+*Last updated: December 25, 2024*
