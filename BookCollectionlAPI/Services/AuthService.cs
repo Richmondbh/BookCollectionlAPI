@@ -39,6 +39,7 @@ namespace BookCollectionAPI.Services
 
             user.Username = request.Username;
             user.PasswordHash = hashedPassword;
+            user.Role = "user";
 
 
             _context.Users.Add(user);
