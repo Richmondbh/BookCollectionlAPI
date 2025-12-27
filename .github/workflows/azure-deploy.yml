@@ -24,7 +24,7 @@ name: Deploy to Azure App Service
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 env:
@@ -60,11 +60,6 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./publish
           
-      - name: Restart Web App
-        run: |
-          curl -X POST https://bookcollectionapi-ewddceafbqcja8d4.scm.azurewebsites.net/api/restart
-        continue-on-error: true
-
 
 
 
