@@ -24,13 +24,13 @@ namespace BookCollectionAPI.Controllers
             var user = await _authService.RegisterAsync(request);
             if (user is null) return BadRequest("Username already exists.");
 
-            var response = new UserResponseDto
+            var userResponse = new UserResponseDto
             {
                 Id = user.Id,
                 Username = user.Username,
                 Role = user.Role
             };
-            return Ok(response);
+            return Ok(userResponse);
         }
 
         // POST: api/auth/login
