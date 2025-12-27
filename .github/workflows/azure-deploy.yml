@@ -59,6 +59,11 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./publish
+          
+      - name: Restart Web App
+        run: |
+          curl -X POST https://bookcollectionapi-ewddceafbqcja8d4.scm.azurewebsites.net/api/restart
+        continue-on-error: true
 
 
 
