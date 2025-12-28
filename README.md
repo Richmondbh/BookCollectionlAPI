@@ -190,26 +190,30 @@ Authorization: Bearer {your-jwt-token}
 ## 🏗️ Project Architecture
 ```
 BookCollectionAPI/
-├── Controllers/           # API endpoints
-│   ├── BooksController.cs
-│   └── AuthController.cs
-├── Data/                  # Data access layer
-│   ├── BookCollectionContext.cs
-│   ├── IBookCollectionRepo.cs
-│   └── SqlBookCollectionsRepo.cs
-├── Dtos/                  # Data transfer objects
-│   ├── BookCollectionReadDto.cs
-│   ├── BookCollectionCreateDto.cs
-│   └── BookCollectionUpdateDto.cs
-├── Models/                # Domain entities
-│   ├── Book.cs
-│   └── User.cs
-├── Profiles/              # AutoMapper configurations
-│   └── BookCollectionProfile.cs
-├── Services/              # Business logic
-│   ├── IAuthService.cs
-│   └── AuthService.cs
-└── Program.cs            # Application entry point
+├── Controllers/          # API endpoints
+│   ├── AuthController    # Authentication (register, login, refresh tokens)
+│   └── BooksController   # CRUD operations for books
+│
+├── Services/             # Business logic
+│   └── AuthService       # JWT token management
+│
+├── Data/                 # Data access
+│   ├── BookCollectionContext      # EF Core DbContext
+│   └── SqlBookCollectionsRepo     # Repository pattern implementation
+│
+├── Models/Entities/      # Domain models
+│   ├── Book              # Book entity
+│   └── User              # User entity with authentication
+│
+├── Dtos/                 # Data transfer objects
+│   ├── Book DTOs         # Create, Read, Update
+│   └── Auth DTOs         # User, Token, Refresh
+│
+├── Profiles/             # AutoMapper configurations
+│
+├── Migrations/           # EF Core database migrations
+│
+└── Program.cs            # Application startup & DI configuration
 ```
 
 ---
