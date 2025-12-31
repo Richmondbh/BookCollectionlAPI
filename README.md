@@ -5,7 +5,7 @@ Demonstrates clean architecture, modern backend practices, and enterprise-grade 
 
 ---
 
-## 🚀 Live Demo
+## Live Demo
 
 **API Base URL:** `https://bookcollectionapi-ewddceafbqcja8d4.swedencentral-01.azurewebsites.net`
 
@@ -15,7 +15,7 @@ Demonstrates clean architecture, modern backend practices, and enterprise-grade 
 
 ---
 
-## ✈️ Overview
+## Overview
 
 The **Book Collection API** is a CRUD-based REST service with JWT authentication and role-based authorization.  
 Initially planned as a Christmas break learning project, it evolved into a comprehensive backend system showcasing production-ready practices.
@@ -28,7 +28,7 @@ Initially planned as a Christmas break learning project, it evolved into a compr
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Core Technologies
 - **.NET 8.0** - Latest LTS framework
@@ -61,7 +61,7 @@ Initially planned as a Christmas break learning project, it evolved into a compr
 
 ---
 
-## 🔆 Features
+## Features
 
 ### Core Functionality
 - ✅ Full **CRUD** operations for books
@@ -85,9 +85,9 @@ Initially planned as a Christmas break learning project, it evolved into a compr
 
 ---
 
-## 📋 API Endpoints
+## API Endpoints
 
-### 🔐 Authentication
+### Authentication
 | Method | Endpoint | Description | Public |
 |--------|----------|-------------|--------|
 | POST | `/api/auth/register` | Register new user | ✅ |
@@ -114,7 +114,7 @@ POST /api/auth/register
 
 ---
 
-### 📚 Books Management
+### Books Management
 | Method | Endpoint | Description | Auth Required |
 |--------|----------|-------------|---------------|
 | GET | `/api/books` | Get all books | ❌ No |
@@ -140,7 +140,7 @@ Authorization: Bearer {your-jwt-token}
 
 ---
 
-## 🧪 Testing the API
+## Testing the API
 
 ### Option 1: Swagger UI (Recommended)
 
@@ -163,7 +163,7 @@ Authorization: Bearer {your-jwt-token}
 
 ---
 
-## 📚 Learning Resources & References
+## Learning Resources & References
 
 ### Official Documentation
 - [ASP.NET Core Dependency Injection](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection)
@@ -187,7 +187,7 @@ Authorization: Bearer {your-jwt-token}
 
 ---
 
-## 🏗️ Project Architecture
+## Project Architecture
 ```
 BookCollectionAPI/
 ├── Controllers/          # API endpoints
@@ -218,7 +218,7 @@ BookCollectionAPI/
 
 ---
 
-## 🏹 Next Steps (Planned Enhancements)
+## Next Steps (Planned Enhancements)
 
 ### Short-term (Next 2 weeks)
 - [ ] **Unit Testing** - xUnit test suite
@@ -240,7 +240,7 @@ BookCollectionAPI/
 
 ---
 
-## 🚀 Local Development
+## Local Development
 
 ### Prerequisites
 - .NET 8.0 SDK
@@ -288,7 +288,7 @@ https://localhost:7XXX/swagger
 
 ---
 
-## 📊 Deployment
+## Deployment
 
 ### GitHub Actions CI/CD
 
@@ -298,31 +298,31 @@ This project uses **GitHub Actions** for continuous deployment to Azure:
 2. GitHub Actions workflow triggered
 3. Build and test
 4. Deploy to Azure App Service
-5. Live in ~3-5 minutes! 🚀
+5. Live in ~3-5 minutes! 
 
 **View the workflow:** `.github/workflows/azure-deploy.yml`
 
 ---
 
-## 👤 Author
+## Author
 
 **Richmond Boakye**  
 System Development / Informatics Student @ Mittuniversitetet (Mid Sweden University)
 
-- 📧 Email: richmondboakye0017@gmail.com
-- 💼 LinkedIn: [Richmond Boakye](https://www.linkedin.com/in/richmond-boakye-188678207/) 
-- 🐙 GitHub: [@Richmondbh](https://github.com/Richmondbh)
-- 🎓 Focus: Backend Development with .NET, C#
+- Email: richmondboakye0017@gmail.com
+- LinkedIn: [Richmond Boakye](https://www.linkedin.com/in/richmond-boakye-188678207/) 
+- GitHub: [@Richmondbh](https://github.com/Richmondbh)
+- Focus: Backend Development with .NET, C#
 
 ---
 
-## 📜 License
+## License
 
 This project is open source and available for educational purposes.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Les Jackson** - For excellent ASP.NET Core tutorials
 - **Patrick God** -  For excellent JWT authntication tutorials
@@ -331,7 +331,7 @@ This project is open source and available for educational purposes.
 
 ---
 
-**⭐ If you find this project helpful, consider giving it a star!**
+**If you find this project helpful, consider giving it a star!**
 
 ---
 
