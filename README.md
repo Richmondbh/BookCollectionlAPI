@@ -1,4 +1,4 @@
-# 📕 Book Collection API
+#  Book Collection API
 
 A production-ready REST API built with **ASP.NET Core** for managing book collections with JWT authentication.  
 Demonstrates clean architecture, modern backend practices, and enterprise-grade API design.
@@ -11,7 +11,7 @@ Demonstrates clean architecture, modern backend practices, and enterprise-grade 
 
 **Swagger Documentation:** `https://bookcollectionapi-ewddceafbqcja8d4.swedencentral-01.azurewebsites.net/swagger`
 
-> 💡 **Tip:** Try the interactive API documentation in Swagger to test all endpoints!
+>  **Tip:** Try the interactive API documentation in Swagger to test all endpoints!
 
 ---
 
@@ -64,24 +64,24 @@ Initially planned as a Christmas break learning project, it evolved into a compr
 ## Features
 
 ### Core Functionality
-- ✅ Full **CRUD** operations for books
-- ✅ **User registration & authentication**
-- ✅ **JWT token-based security**
-- ✅ **Role-based authorization** (User, Admin)
-- ✅ **Refresh token mechanism** for session management
+-  Full **CRUD** operations for books
+-  **User registration & authentication**
+-  **JWT token-based security**
+-  **Role-based authorization** (User, Admin)
+-  **Refresh token mechanism** for session management
 
 ### API Design
-- ✅ **RESTful architecture** following HTTP standards
-- ✅ **DTO-based contracts** for clean separation
-- ✅ **Partial updates (PATCH)** using JSON Patch
-- ✅ **Input validation** with Data Annotations
-- ✅ **Swagger/OpenAPI** interactive documentation
+-  **RESTful architecture** following HTTP standards
+-  **DTO-based contracts** for clean separation
+-  **Partial updates (PATCH)** using JSON Patch
+-  **Input validation** with Data Annotations
+-  **Swagger/OpenAPI** interactive documentation
 
 ### Code Quality
-- ✅ **Repository pattern** for testable data access
-- ✅ **AutoMapper** for maintainable mappings
-- ✅ **Async/await** for scalable performance
-- ✅ **Dependency injection** throughout
+-  **Repository pattern** for testable data access
+-  **AutoMapper** for maintainable mappings
+-  **Async/await** for scalable performance
+-  **Dependency injection** throughout
 
 ---
 
@@ -90,9 +90,9 @@ Initially planned as a Christmas break learning project, it evolved into a compr
 ### Authentication
 | Method | Endpoint | Description | Public |
 |--------|----------|-------------|--------|
-| POST | `/api/auth/register` | Register new user | ✅ |
-| POST | `/api/auth/login` | Login and receive JWT tokens | ✅ |
-| POST | `/api/auth/refresh-token` | Refresh access token | ✅ |
+| POST | `/api/auth/register` | Register new user | YES |
+| POST | `/api/auth/login` | Login and receive JWT tokens | Yes |
+| POST | `/api/auth/refresh-token` | Refresh access token | Yes |
 
 **Example Request (Register):**
 ```json
@@ -117,12 +117,12 @@ POST /api/auth/register
 ### Books Management
 | Method | Endpoint | Description | Auth Required |
 |--------|----------|-------------|---------------|
-| GET | `/api/books` | Get all books | ❌ No |
-| GET | `/api/books/{id}` | Get book by ID | ❌ No |
-| POST | `/api/books` | Create new book | ✅ Yes |
-| PUT | `/api/books/{id}` | Update entire book | ✅ Yes |
-| PATCH | `/api/books/{id}` | Partial update book | ✅ Yes |
-| DELETE | `/api/books/{id}` | Delete book | ✅ Yes (Admin only) |
+| GET | `/api/books` | Get all books |  No |
+| GET | `/api/books/{id}` | Get book by ID |  No |
+| POST | `/api/books` | Create new book |  Yes |
+| PUT | `/api/books/{id}` | Update entire book |  Yes |
+| PATCH | `/api/books/{id}` | Partial update book |  Yes |
+| DELETE | `/api/books/{id}` | Delete book |  Yes (Admin only) |
 
 **Example Request (Create Book):**
 ```json
@@ -149,7 +149,7 @@ Authorization: Bearer {your-jwt-token}
 3. For protected endpoints:
    - First, use `/api/auth/register` and `/api/auth/login`
    - Copy the `accessToken` from the login response
-   - Click the **"Authorize"** button (🔒 lock icon)
+   - Click the **"Authorize"** button ( lock icon)
    - Enter: `Bearer {your-access-token}`
    - Click **"Authorize"**
    - Now you can test protected endpoints!
@@ -216,34 +216,12 @@ BookCollectionAPI/
 └── Program.cs            # Application startup & DI configuration
 ```
 
----
 
-## Next Steps (Planned Enhancements)
-
-### Short-term (Next 2 weeks)
-- [ ] **Unit Testing** - xUnit test suite
-- [ ] **Integration Testing** - API endpoint tests
-- [ ] **Logging** - Structured logging with Serilog
-- [ ] **Pagination** - Efficient data retrieval for large datasets
-
-### Medium-term (Thesis preparation)
-- [ ] **Advanced Filtering** - Query parameters for search
-- [ ] **Sorting** - Flexible result ordering
-- [ ] **Caching** - Redis for performance optimization
-- [ ] **Rate Limiting** - API abuse prevention
-
-### Long-term (Professional practice)
-- [ ] **Microservices** - Service decomposition
-- [ ] **Message Queuing** - RabbitMQ/Azure Service Bus
-- [ ] **Docker** - Containerization
-- [ ] **Kubernetes** - Orchestration for scalability
-
----
 
 ## Local Development
 
 ### Prerequisites
-- .NET 8.0 SDK
+- .NET 9.0 SDK
 - SQL Server or SQL Server Express
 - Visual Studio 2022 / VS Code / Rider
 
@@ -335,4 +313,4 @@ This project is open source and available for educational purposes.
 
 ---
 
-*Last updated: December 25, 2024*
+*Last updated: January 03, 2026*
