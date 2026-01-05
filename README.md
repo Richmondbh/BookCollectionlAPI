@@ -171,10 +171,10 @@ Authorization: Bearer {your-jwt-token}
 - [EF Core Connection Strings](https://learn.microsoft.com/en-us/ef/core/miscellaneous/connection-strings)
 - [Data Annotations Validation](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations)
 - [JWT Authentication in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/)
-- https://learn.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-10.0
-- https://learn.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-8.0&tabs=visual-studio
-- https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-10.0
-- https://learn.microsoft.com/en-us/ef/core/miscellaneous/connection-strings?tabs=dotnet-core-cli
+- [Cors](https://learn.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-10.0)
+- [swashbuckle](https://learn.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-8.0&tabs=visual-studio)
+- [Dependency-injection,ASPNET](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-10.0)
+- [Connection-Strings](https://learn.microsoft.com/en-us/ef/core/miscellaneous/connection-strings?tabs=dotnet-core-cli)
 
 ### Problem-Solving Resources
 - [SQL Server Certificate Trust Issue](https://stackoverflow.com/questions/17615260/the-certificate-chain-was-issued-by-an-authority-that-is-not-trusted)
@@ -183,7 +183,9 @@ Authorization: Bearer {your-jwt-token}
 ### Tutorial References
 - [Les Jackson's .NET REST API Tutorial](https://www.youtube.com/watch?v=fmvcAzHpsk8)
 - [JWT Authentication Tutorial](https://www.youtube.com/watch?v=6EEltKS8AwA)
-- https://www.youtube.com/watch?v=nVHEnRA8LL4&t=291s
+- [ASP.Net JWT Authentication In Swagger UI](https://www.youtube.com/watch?v=nVHEnRA8LL4&t=291s)
+- [.NET 9 Web API & Entity Framework ](https://www.youtube.com/watch?v=AKjG2tjI07U&t=3172s)
+- [.NET8 and Entity Framework Core Tutorial](https://www.youtube.com/watch?v=6YIRKBsRWVI&t=2071s)
 
 ---
 
