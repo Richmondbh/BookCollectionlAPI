@@ -311,7 +311,7 @@ This project is open source and available for educational purposes.
 
 ---
 
-**If you find this project helpful, consider giving it a star!**
+**If you find this project helpful, consider giving it a star:)**
 
 ---
 
