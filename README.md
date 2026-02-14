@@ -22,9 +22,8 @@ Initially planned as a Christmas break learning project, it evolved into a compr
 
 **Project Purpose:**
 - Backend-focused portfolio piece
-- Preparation for Bachelor's thesis (Informatics / System Development)
 - Demonstration of professional .NET development skills
-- Foundation for future supermarket management system thesis project
+
 
 ---
 
@@ -307,7 +306,6 @@ This project is open source and available for educational purposes.
 - **Les Jackson** - For excellent ASP.NET Core tutorials
 - **Patrick God** -  For excellent JWT authntication tutorials
 - **Microsoft Learn** - Comprehensive .NET documentation
-- **Mittuniversitetet** - Academic foundation in System Development
 
 ---
 
