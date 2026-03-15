@@ -3,6 +3,7 @@
 A production-ready REST API built with **ASP.NET Core** for managing book collections with JWT authentication.  
 Demonstrates clean architecture, modern backend practices, and enterprise-grade API design.
 
+![Book Collection API  Screenshot](BookAPI-Auth_Swagger_Richmond.jpg)
 ---
 
 ## Live Demo
